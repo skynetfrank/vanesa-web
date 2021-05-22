@@ -375,7 +375,7 @@ header span i {
   border: 2px solid #d9d9d9;
   background: transparent;
   display: block;
-  -webkit-backface-visibility: visible;
+  visibility: visible;
   transition: opacity 200ms ease;
   border-radius: 30px;
 }
@@ -812,9 +812,6 @@ footer a {
 
 footer a:hover {
   color: #4267b2;
-}
-
-.contact-info {
 }
 
 .contact-info .fa {
