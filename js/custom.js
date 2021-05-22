@@ -253,8 +253,10 @@ document.getElementById("myTable").addEventListener('click', (e) => {
 //con cada cambio en la autenticacion del usuario: login - logout
 auth.onAuthStateChanged((user) => {
 
+
   if (user) {
     console.log("auth changed: hay user");
+
     //set up UI para usuarios autenticados sin novedad.
     usuarioActual.innerHTML = 'hola: ' + user.email;
     document.getElementById("link-logout").style.display = "inline-block";
@@ -268,9 +270,8 @@ auth.onAuthStateChanged((user) => {
     document.getElementById("fecha").setAttribute('required', 'true');
     document.getElementById("hora").setAttribute('required', 'true');
     document.getElementById("div-mensaje").style.display = "inline-block";
-    document.getElementById("mostrar-citas").style.display = "inline-block";
+  
     document.getElementById("link-registrar").style.display = "none";
-
     document.getElementById("cf-submit").innerHTML = "Apartar Cita";
 
 
@@ -283,20 +284,27 @@ auth.onAuthStateChanged((user) => {
         .orderBy('hora', "asc")
         .onSnapshot(querysnapshot => {
           let table = document.getElementById('myTable')
+          document.getElementById("mostrar-citas").style.display = "inline-block";
           table.innerHTML = ''
           querysnapshot.forEach((doc) => {
 
             let data = doc.data();
             let row = `<tr>     <td id="td-id-hidden">${doc.id}</td>
                             <td>${formatearFecha(data.fecha)}</td>
-                            <td>${data.hora}</td>
-                            <td><button class="btnEliminar">eliminar</button></td>
+                            <td class="td-hora">${data.hora}</td>
+                            <td><button class="btnEliminar" id="btn-tabla">eliminar</button></td>
                       </tr>`;
             table.innerHTML += row
           })
+          if(table.innerHTML===''){
+            document.getElementById("mostrar-citas").style.display = "none";
+          }
+          
         });
     }
     citasPendientes();
+    
+   
 
     //fin de set up UI para usuarios autenticados sin novedad. 
 
