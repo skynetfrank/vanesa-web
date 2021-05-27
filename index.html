@@ -1,411 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
 
-<head>
-  <title>Clinica Dental v22M</title>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="description" content="Sitio Web Odontologia">
-  <meta name="keywords" content="Aplicacion para odontologos">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/animate.css">
-  <link rel="stylesheet" href="css/owl.carousel.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="css/style.css">
-</head>
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/8.6.2/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/8.6.2/firebase-auth.js"></script>
+    <script defer src="/__/firebase/8.6.2/firebase-database.js"></script>
+    <script defer src="/__/firebase/8.6.2/firebase-firestore.js"></script>
+    <script defer src="/__/firebase/8.6.2/firebase-functions.js"></script>
+    <script defer src="/__/firebase/8.6.2/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/8.6.2/firebase-storage.js"></script>
+    <script defer src="/__/firebase/8.6.2/firebase-analytics.js"></script>
+    <script defer src="/__/firebase/8.6.2/firebase-remote-config.js"></script>
+    <script defer src="/__/firebase/8.6.2/firebase-performance.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
-<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
-  <!-- PRE LOADER -->
-  <section class="preloader">
-    <div class="spinner">
-      <span class="spinner-rotate"></span>
+    <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message">
+      <h2>Welcome</h2>
+      <h1>Firebase Hosting Setup Complete</h1>
+      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
+      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
     </div>
-  </section>
-  <!-- HEADER -->
-  <header>
-    <div class="container">
-      <div class="row">
+    <p id="load">Firebase SDK Loading&hellip;</p>
 
-        <div class="col-md-8 col-sm-7 text-align-left">
-          <span class="phone-icon"><i class="fa fa-phone"></i> 0414-000-00-00</span>
-          <span class="date-icon"><i class="fa fa-calendar-plus-o"></i> 7:00 AM - 7:00 PM
-            (Lun-Vie)</span>
-        </div>
-      </div>
-    </div>
-  </header>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const loadEl = document.querySelector('#load');
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.firestore().doc('/foo/bar').get().then(() => { });
+        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        // firebase.analytics(); // call to activate
+        // firebase.analytics().logEvent('tutorial_completed');
+        // firebase.performance(); // call to activate
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
-
-  <!-- MENU -->
-  <section class="navbar navbar-default navbar-static-top" role="navigation">
-    <div class="container">
-
-      <div class="navbar-header">
-        <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon icon-bar"></span>
-          <span class="icon icon-bar"></span>
-          <span class="icon icon-bar"></span>
-        </button>
-
-        <!-- lOGO TEXT HERE -->
-        <a href="index.html" class="navbar-brand"><i class="fa fa-heartbeat"></i> Clinica Dental</a>
-
-      </div>
-
-      <!-- MENU LINKS -->
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#top" class="smoothScroll">Inicio</a></li>
-          <li><a href="#about" class="smoothScroll">Nosotros</a></li>
-          <li><a href="#team" class="smoothScroll">Servicios</a></li>
-          <li><a href="#google-map" class="smoothScroll">Contacto</a></li>
-          <li class="appointment-btn"><a href="#div-cita-start">Programa una Cita</a></li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-  <!-- HOME -->
-  <section id="home" class="slider" data-stellar-background-ratio="0.5">
-
-    <div class="container">
-      <div class="row">
-
-        <div class="owl-carousel owl-theme">
-
-          <div class="item item-first">
-            <div class="caption">
-
-              <div class="col-md-offset-1 col-md-10">
-                <h3>Hagamos tu vida mas feliz</h3>
-                <h1>Salud Bucal</h1>
-                <a href="#team" class="section-btn btn btn-default smoothScroll">Conoce
-                  nuestros
-                  Servicios</a>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="item item-second">
-            <div class="caption">
-              <div class="col-md-offset-1 col-md-10">
-                <h3>Nuestra Mision es brindarte</h3>
-                <h1>Una Mejor Sonrisa</h1>
-                <a href="#about" class="section-btn btn btn-default btn-gray smoothScroll">Mas
-                  sobre Nosotros</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="item item-third">
-            <div class="caption">
-              <div class="col-md-offset-1 col-md-10">
-                <h3>tu salud bucal no tiene precio</h3>
-                <h1>Prevencion Significa Ahorro</h1>
-                <a href="#google-map" class="section-btn btn btn-default btn-blue smoothScroll">Lee
-                  ver mas...</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-6 col-sm-6">
-          <div class="about-info">
-            <h2 class="wow fadeInUp" data-wow-delay="0.6s">Bienvenido a tu <i class="fa fa-heartbeat"></i> Clinica
-              Dental</h2>
-            <div class="wow fadeInUp" data-wow-delay="0.8s">
-              <p>Aenean luctus lobortis tellus, vel ornare enim molestie condimentum. Curabitur
-                lacinia nisi vitae velit volutpat venenatis.</p>
-              <p>Sed a dignissim lacus. Quisque fermentum est non orci commodo, a luctus urna
-                mattis. Ut placerat, diam a tempus vehicula.</p>
-            </div>
-            <figure class="profile wow fadeInUp" data-wow-delay="1s">
-              <img src="images/vanessa.jpg" class="img-responsive" alt="">
-              <figcaption>
-                <h3>Dra. Vanessa Jackson</h3>
-                <p>Odontologo</p>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- TEAM -->
-  <section id="team" data-stellar-background-ratio="1">
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-6 col-sm-6">
-          <div class="about-info">
-            <h2 class="wow fadeInUp" data-wow-delay="0.1s">Nuestros Servicios</h2>
-          </div>
-        </div>
-
-        <div class="clearfix"></div>
-
-        <div class="col-md-4 col-sm-6">
-          <div class="team-thumb wow fadeInUp" data-wow-delay="0.2s">
-            <img src="images/team-image91.jpg" class="img-responsive" alt="">
-
-            <div class="team-info">
-              <h3>Extracion de Piezas</h3>
-              <p>Odontologia</p>
-              <div class="team-contact-info">
-                <p><i class="fa fa-phone"></i> 0414-000-00-00</p>
-                <p><i class="fa fa-envelope-o"></i> <a href="#">general@company.com</a></p>
-              </div>
-              <ul class="social-icon">
-                <li><a href="#" class="fa fa-linkedin-square"></a></li>
-                <li><a href="#" class="fa fa-envelope-o"></a></li>
-              </ul>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="col-md-4 col-sm-6">
-          <div class="team-thumb wow fadeInUp" data-wow-delay="0.4s">
-            <img src="images/team-image90.jpg" class="img-responsive" alt="">
-
-            <div class="team-info">
-              <h3>Limpieza Bucal</h3>
-              <p>Odontologia</p>
-              <div class="team-contact-info">
-                <p><i class="fa fa-phone"></i> 0412-000-00-00</p>
-                <p><i class="fa fa-envelope-o"></i> <a href="#">pediatria@company.com</a></p>
-              </div>
-              <ul class="social-icon">
-                <li><a href="#" class="fa fa-facebook-square"></a></li>
-                <li><a href="#" class="fa fa-envelope-o"></a></li>
-                <li><a href="#" class="fa fa-flickr"></a></li>
-              </ul>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="col-md-4 col-sm-6">
-          <div class="team-thumb wow fadeInUp" data-wow-delay="0.6s">
-            <img src="images/team-image92.jpg" class="img-responsive" alt="">
-
-            <div class="team-info">
-              <h3>Blanqueamiento</h3>
-              <p>Odontologia</p>
-              <div class="team-contact-info">
-                <p><i class="fa fa-phone"></i> 0412-000-00-00</p>
-                <p><i class="fa fa-envelope-o"></i> <a href="#">cardio@company.com</a></p>
-              </div>
-              <ul class="social-icon">
-                <li><a href="#" class="fa fa-twitter"></a></li>
-                <li><a href="#" class="fa fa-envelope-o"></a></li>
-              </ul>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- AGENDAR UNA CITA -->
-  <section id="appointment" data-stellar-background-ratio="3">
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-5 col-sm-5" id="div-imagen-cita">
-          <img src="images/appointment-image.jpg" class="img-responsive" alt="">
-        </div>
-
-        <div class="col-md-7 col-sm-7" id="div-cita-start">
-          <!-- SECTION TITLE -->
-          <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
-            <span id="usuario"></span><a href="#!" id="link-logout">cerrar sesion</a>
-            <h2>Programa una Cita</h2>
-          </div>
-          <!-- CONTACT FORM HERE -->
-          <form id="appointment-form" role="form" method="post" action="#">
-
-            <div class="wow fadeInUp" data-wow-delay="0.8s">
-              <div class="col-md-6 col-sm-6" id="div-email">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email">
-              </div>
-              <div class="col-md-6 col-sm-6" id="div-password">
-                <label for="password">Clave</label>
-                <input type="password" class="form-control" id="password" name="password">
-              </div>
-              <div class="col-md-4 col-sm-4" id="div-nombre">
-                <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre">
-              </div>
-              <div class="col-md-4 col-sm-4" id="div-apellido">
-                <label for="apellido">Apellido</label>
-                <input type="text" class="form-control" id="apellido" name="apellido">
-              </div>
-              <div class="col-md-4 col-sm-4" id="div-cedula">
-                <label for="cedula">Cedula</label>
-                <input type="text" class="form-control" id="cedula" name="cedula">
-              </div>
-              <div class="col-md-6 col-sm-6" id="div-fecha">
-                <label for="date">Selecciona una
-                  Fecha</label>
-                <input type="date" name="fecha" value="" id="fecha" class="form-control">
-              </div>
-              <div class="col-md-6 col-sm-6" id="div-hora">
-                <label for="hora">Selecciona una
-                  Hora</label>
-                <input type="time" list="datalist-horas" class="form-control desactivado" id="hora" name="hora">
-                <datalist id="datalist-horas"></datalist>
-              </div>
-              <div class="col-md-12 col-sm-12" id="div-mensaje">
-                <label for="Message">Mensaje (opcional)
-                </label>
-                <textarea class="form-control" rows="4" id="mensaje" name="mensaje"></textarea>
-              </div>
-              <div class="col-md-12 col-sm-12" id="div-btn-submit">
-                <button type="submit" class="form-control" id="cf-submit" name="submit">Enviar</button>
-              </div>
-
-              <div class="col-md-12 col-sm-12" id="mostrar-citas">
-                <h3>Citas Pendientes</h3>
-                <table>
-                  <thead>
-                    <tr>
-                      <th id="th-id-hidden">id</th>
-                      <th>Dia</th>
-                      <th>Hora</th>
-                      <th>accion</th>
-                    </tr>
-                  </thead>
-                  <tbody id="myTable">
-                  </tbody>
-                </table>
-
-              </div>
-
-              <div class="col-md-12 col-sm-12" id="div-link-registrar">
-                <a href="#!" id="link-registrar">No Tienes cuenta? Haz click aqui y Registrate!</a>
-              </div>
-            </div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-  </section>
-  <!-- CONTACTO -->
-  <section id="google-map">
-    <div id="contact">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12">
-            <h2>Contactanos</h2>
-          </div>
-          <div class="col-md-8 col-sm-8">
-
-            <div class="col-md-12 col-sm-12" id="div-form">
-              <form action="#" method="post" role="form" id="contact-form">
-                <input type="hidden" name="id_site">
-                <div class="col-md-6 col-sm-6" id="div-nombre">
-                  <label>Tu Nombre</label>
-                  <input name="from_name" type="text" autocomplete="off" class="form-control" id="name">
-                </div>
-                <div class="col-md-6 col-sm-6">
-                  <label>Tu Email</label>
-                  <input name="telefono" type="text" autocomplete="off" class="form-control" id="telefono">
-                </div>
-                <div class="col-md-12 col-sm-12">
-                  <input name="subject" type="text" autocomplete="off" class="form-control" id="subject"
-                    placeholder="Asunto">
-                </div>
-                <div class="col-md-12 col-sm-12">
-                  <textarea name="message" rows="5" autocomplete="off" class="form-control" id="message"
-                    placeholder="Escribe aqui tu mensaje"></textarea>
-                </div>
-                <div class="col-md-9 col-sm-9">
-                  <p>Envianos tus preguntas, dudas o sugerencias y las responderemos a la
-                    brevedad.</p>
-                </div>
-                <div class="col-md-3 col-sm-3">
-                  <input name="submit" type="submit" class="form-control" id="submit" value="Enviar">
-                </div>
-            </div>
-
-            </form>
-
-          </div>
-
-          <div class="col-md-4 col-sm-4">
-            <footer data-stellar-background-ratio="5">
-              <div class="container">
-                <div class="row">
-
-                  <div class="col-md-4 col-sm-4">
-                    <div class="footer-thumb">
-                      <h4 class="wow fadeInUp" data-wow-delay="0.4s">Direccion</h4>
-                      <p>Fusce at libero iaculis, venenatis augue quis, pharetra lorem.
-                        Curabitur ut dolor eu
-                        elit consequat ultricies.</p>
-
-                      <div class="contact-info">
-                        <p><i class="fa fa-phone"></i> 0416-000-00-00</p>
-                        <p><i class="fa fa-envelope-o"></i> <a href="#">info@company.com</a></p>
-                      </div>
-                    </div>
-                    <ul class="social-icon">
-                      <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
-                      <li><a href="#" class="fa fa-twitter"></a></li>
-                      <li><a href="#" class="fa fa-instagram"></a></li>
-                    </ul>
-                    <div class="footer-thumb">
-                      <div class="opening-hours">
-                        <h4 class="wow fadeInUp" data-wow-delay="0.4s">Horario</h4>
-                        <p>Lunes - Viernes <span>06:00 AM - 10:00 PM</span></p>
-                        <p>Sabados <span>09:00 AM - 08:00 PM</span></p>
-                        <p>Domingos <span>Cerrado</span></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div>
-          </footer>
-        </div>
-      </div>
-    </div>
-    </div>
-  </section>
-
-
-
-  <!-- SCRIPTS -->
-  <!---librerias firebase -->
-  <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.4.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.4.0/firebase-firestore.js"></script>
-  <script src="js/firebase-config.js"></script>
-  <!---Otras librerias -->
-  <script src="js/jquery.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.sticky.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/wow.min.js"></script>
-  <script src="js/smoothscroll.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/custom.js"></script>
-</body>
-
+        try {
+          let app = firebase.app();
+          let features = [
+            'auth', 
+            'database', 
+            'firestore',
+            'functions',
+            'messaging', 
+            'storage', 
+            'analytics', 
+            'remoteConfig',
+            'performance',
+          ].filter(feature => typeof app[feature] === 'function');
+          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
+  </body>
 </html>
